@@ -15,10 +15,25 @@ function ouiBounce(el, config) {
     var _this = this,
         _html = document.getElementsByTagName('html')[0];
 
+    var mY = _html.height()/2;
+    
+    _html.mousemove(function(e) {
+   
+      if (e.pageY < mY) {
+        _html.addEventListener('mouseout', handleMouseout);
+        mY = e.pageY;
+        
+      } else {
+        _html.removeEventListener('mouseout', handleMouseout);
+        mY = e.pageY;
+      }
+    });
+    
     _html.addEventListener('mouseout', handleMouseout);
-
+    
     function handleMouseout(e) {
       if (e.clientY > sensitivity || (getCookieValue('viewedOuibounceModal', 'true') && !aggressive)) return;
+      
       _this.style.display = 'block';
       callback();
 
