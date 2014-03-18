@@ -29,7 +29,7 @@ function ouiBounce(el, config) {
       }
     });
     
-    _html.addEventListener('mouseout', handleMouseout);
+    //_html.addEventListener('mouseout', handleMouseout);
     
     function handleMouseout(e) {
       if (e.clientY > sensitivity || (getCookieValue('viewedOuibounceModal', 'true') && !aggressive)) return;
